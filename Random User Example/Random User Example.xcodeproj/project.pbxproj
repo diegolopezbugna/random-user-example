@@ -13,6 +13,7 @@
 		A7F47177208698F800DF3FD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7F47175208698F800DF3FD3 /* LaunchScreen.storyboard */; };
 		A7F47182208698F800DF3FD3 /* Random_User_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F47181208698F800DF3FD3 /* Random_User_ExampleTests.swift */; };
 		A7FD6A8B208773EA00BC81E6 /* UsersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD6A8A208773EA00BC81E6 /* UsersCollectionViewController.swift */; };
+		A7FD6A8D208776DF00BC81E6 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD6A8C208776DF00BC81E6 /* UserCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		A7F47181208698F800DF3FD3 /* Random_User_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random_User_ExampleTests.swift; sourceTree = "<group>"; };
 		A7F47183208698F800DF3FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7FD6A8A208773EA00BC81E6 /* UsersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCollectionViewController.swift; sourceTree = "<group>"; };
+		A7FD6A8C208776DF00BC81E6 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				A7F47170208698F800DF3FD3 /* Main.storyboard */,
 				A7F4716C208698F800DF3FD3 /* AppDelegate.swift */,
 				A7FD6A8A208773EA00BC81E6 /* UsersCollectionViewController.swift */,
+				A7FD6A8C208776DF00BC81E6 /* UserCollectionViewCell.swift */,
 			);
 			path = "Random User Example";
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7FD6A8D208776DF00BC81E6 /* UserCollectionViewCell.swift in Sources */,
 				A7F4716D208698F800DF3FD3 /* AppDelegate.swift in Sources */,
 				A7FD6A8B208773EA00BC81E6 /* UsersCollectionViewController.swift in Sources */,
 			);

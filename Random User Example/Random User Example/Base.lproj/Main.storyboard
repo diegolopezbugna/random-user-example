@@ -42,13 +42,27 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="usD-Ad-L6o">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="usD-Ad-L6o" customClass="UserCollectionViewCell" customModule="Random_User_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Icc-Ot-8kj">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="Icc-Ot-8kj" firstAttribute="top" secondItem="usD-Ad-L6o" secondAttribute="top" id="0F4-FO-0oF"/>
+                                    <constraint firstAttribute="bottom" secondItem="Icc-Ot-8kj" secondAttribute="bottom" id="Nk5-Ug-Fdm"/>
+                                    <constraint firstItem="Icc-Ot-8kj" firstAttribute="leading" secondItem="usD-Ad-L6o" secondAttribute="leading" id="VbQ-jP-xiB"/>
+                                    <constraint firstAttribute="trailing" secondItem="Icc-Ot-8kj" secondAttribute="trailing" id="daf-XR-88W"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="Icc-Ot-8kj" id="0aU-rp-LFc"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
