@@ -62,7 +62,9 @@ class UsersCollectionViewController: UICollectionViewController {
         let userConnector = DummyUserConnector()
         userConnector.getUsers { (users) in
             self.users = users
-            self.collectionView?.reloadData()   // mainQueue?
+            DispatchQueue.main.async {
+                self.collectionView?.reloadData()
+            }
         }
     }
 }
