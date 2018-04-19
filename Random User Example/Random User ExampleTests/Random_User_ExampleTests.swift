@@ -21,9 +21,11 @@ class Random_User_ExampleTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testGetUsers() {
+        let usersConnector = DummyUserConnector()
+        usersConnector.getUsers { (users) in
+            XCTAssert(users.count > 0)
+        }
     }
     
     func testPerformanceExample() {
