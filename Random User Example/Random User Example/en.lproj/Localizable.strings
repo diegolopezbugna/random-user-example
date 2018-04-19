@@ -8,3 +8,6 @@
 
 "usersTitle" = "Random Users";
 "userDetailTitle" = "User Details";
+"errorTitle" = "ERROR";
+"errorMessage" = "Please try again";
+"tryAgain" = "Try Again";

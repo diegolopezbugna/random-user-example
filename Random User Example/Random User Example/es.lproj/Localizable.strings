@@ -8,3 +8,6 @@
 
 "usersTitle" = "Usuarios Aleatorios";
 "userDetailTitle" = "Detalle del Usuario";
+"errorTitle" = "ERROR";
+"errorMessage" = "Por favor intente nuevamente";
+"tryAgain" = "Reintentar";

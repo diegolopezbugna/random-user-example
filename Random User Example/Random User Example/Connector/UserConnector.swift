@@ -9,7 +9,7 @@
 import Foundation
 
 protocol UserConnectorProtocol {
-    func getUsers(completion: @escaping ([User]) -> ())
+    func getUsers(completion: @escaping ([User]?) -> ())
 }
 
 class UserConnector : UserConnectorProtocol {
@@ -17,7 +17,7 @@ class UserConnector : UserConnectorProtocol {
     let getUsersUrl: String = "https://randomuser.me/api/?results=%i"
     let quantity: Int = 50 // TODO: move to param
     
-    func getUsers(completion: @escaping ([User]) -> ()) {
+    func getUsers(completion: @escaping ([User]?) -> ()) {
 
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
@@ -25,26 +25,28 @@ class UserConnector : UserConnectorProtocol {
         NSLog("URL: %@", url.absoluteString)
         
         let task = session.dataTask(with: url) { (data, response, error) in
-            if (error == nil) {
-                if let data = data {
-                    var users: [User] = []
-                    let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                    
-                    for case let result in (json!["results"] as! [[String: Any]]) {
-                        print("RESULT:", result) // random user api gives same thumbnail for different persons!!!
-                        let user = User(json: result)
-                        users.append(user)
-                    }
-                    
-                    completion(users)
-                } else {
-                    NSLog("DATA NIL") // TODO: better error handle
-                    completion([])
-                }
-            } else {
+            
+            guard error == nil else {
                 NSLog("ERROR: %@", error!.localizedDescription)
-                completion([])  // TODO: return nil 
+                completion(nil)
+                return
             }
+            guard let data = data else {
+                NSLog("DATA NIL")
+                completion(nil)
+                return
+            }
+            
+            var users: [User] = []
+            let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+            
+            for case let result in (json!["results"] as! [[String: Any]]) {
+                print("RESULT:", result) // random user api gives same thumbnail for different persons!!!
+                let user = User(json: result)
+                users.append(user)
+            }
+            
+            completion(users)
         }
         task.resume()
     }

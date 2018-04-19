@@ -10,7 +10,7 @@ import Foundation
 
 class DummyUserConnector : UserConnectorProtocol {
     
-    func getUsers(completion: @escaping ([User]) -> ()) {
+    func getUsers(completion: @escaping ([User]?) -> ()) {
         
         let user = User()
         user.firstName = "TEST"
