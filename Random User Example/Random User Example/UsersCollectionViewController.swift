@@ -24,15 +24,14 @@ class UsersCollectionViewController: UICollectionViewController {
         super.didReceiveMemoryWarning()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if let userDetailVC = segue.destination as? UserDetailViewController {
+            let cell = sender as! UserCollectionViewCell
+            let indexPath = self.collectionView?.indexPath(for: cell)
+            let selectedUser = self.users[indexPath!.row]
+            userDetailVC.user = selectedUser
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -56,9 +55,6 @@ class UsersCollectionViewController: UICollectionViewController {
         return cell
     }
 
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        NSLog("didSelectItemAt: %i", indexPath.row)
-//    }
 
     func fillUsers() {
         let userConnector = UserConnector()
