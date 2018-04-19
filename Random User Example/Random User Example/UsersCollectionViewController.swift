@@ -17,6 +17,7 @@ class UsersCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = NSLocalizedString("usersTitle", comment: "")
         fillUsers()
     }
 

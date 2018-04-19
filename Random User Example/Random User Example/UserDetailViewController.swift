@@ -21,6 +21,7 @@ class UserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = NSLocalizedString("userDetailTitle", comment: "")
         fillUser()
     }
 

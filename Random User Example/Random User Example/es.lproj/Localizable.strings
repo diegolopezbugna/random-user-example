@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Random User Example
+
+  Created by Diego López Bugna on 19/04/2018.
+  Copyright © 2018 Diego López Bugna. All rights reserved.
+*/
+
+"usersTitle" = "Usuarios Aleatorios";
+"userDetailTitle" = "Detalle del Usuario";
