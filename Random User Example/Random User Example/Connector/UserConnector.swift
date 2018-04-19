@@ -12,18 +12,6 @@ protocol UserConnectorProtocol {
     func getUsers(completion: @escaping ([User]) -> ())
 }
 
-class DummyUserConnector : UserConnectorProtocol {
-
-    func getUsers(completion: @escaping ([User]) -> ()) {
-
-        let user = User()
-        user.firstName = "TEST"
-        let users = [user, user]
-        
-        completion(users)
-    }
-}
-
 class UserConnector : UserConnectorProtocol {
     
     let getUsersUrl: String = "https://randomuser.me/api/?results=%i"
