@@ -10,8 +10,10 @@ import Foundation
 
 class User {
     
-    var thumbnail: NSData?
-    var largeImage: NSData?
+    var thumbnail: Data?
+    var thumbnailUrl: String?
+    var largeImage: Data?
+    var largeImageUrl: String?
     var username: String?
     var firstName: String?
     var lastName: String?

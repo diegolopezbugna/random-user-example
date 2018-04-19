@@ -12,12 +12,12 @@ private let reuseIdentifier = "Cell"
 
 class UsersCollectionViewController: UICollectionViewController {
 
-    var users: [User]? = []
+    var users: [User]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getUsers()
+        fillUsers()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,14 +42,16 @@ class UsersCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return users?.count ?? 0
+        return users.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserCollectionViewCell
     
         // Configure the cell
-        cell.imageView.backgroundColor = .black
+        if let data = self.users![indexPath.row].thumbnail {
+            cell.imageView.image = UIImage(data: data)
+        }
     
         return cell
     }
@@ -58,13 +60,32 @@ class UsersCollectionViewController: UICollectionViewController {
 //        NSLog("didSelectItemAt: %i", indexPath.row)
 //    }
 
-    func getUsers() {
-        let userConnector = DummyUserConnector()
+    func fillUsers() {
+        let userConnector = UserConnector()
         userConnector.getUsers { (users) in
             self.users = users
             DispatchQueue.main.async {
                 self.collectionView?.reloadData()
+                self.fillUsersThumbnails()
             }
         }
     }
+    
+    func fillUsersThumbnails() {
+        guard self.users.count > 0 else {
+            return
+        }
+        
+        for index in 0...(self.users.count - 1) {
+            DispatchQueue.global().async {
+                let url = URL(string: self.users[index].thumbnailUrl!)
+                let data = try? Data(contentsOf: url!)
+                self.users[index].thumbnail = data
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadItems(at: [IndexPath(row: index, section: 0)])
+                }
+            }
+        }
+    }
+
 }
