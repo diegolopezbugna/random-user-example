@@ -73,17 +73,17 @@ class UsersCollectionViewController: UICollectionViewController {
     }
     
     func fillUsersThumbnails() {
-        guard self.users.count > 0 else {
+        guard let users = users, self.users.count > 0 else {
             return
         }
         
-        for index in 0...(self.users.count - 1) {
-            DispatchQueue.global().async {
-                let url = URL(string: self.users[index].thumbnailUrl!)
+        for index in 0...(users.count - 1) {
+            DispatchQueue.global().async { [weak self] in
+                let url = URL(string: users[index].thumbnailUrl!)
                 if let data = try? Data(contentsOf: url!) {
-                    self.users[index].thumbnail = data
+                    users[index].thumbnail = data
                     DispatchQueue.main.async {
-                        self.collectionView?.reloadItems(at: [IndexPath(row: index, section: 0)])
+                        self?.collectionView?.reloadItems(at: [IndexPath(row: index, section: 0)])
                     }
                 }
             }

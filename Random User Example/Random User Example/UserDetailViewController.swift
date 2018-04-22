@@ -39,9 +39,9 @@ class UserDetailViewController: UIViewController {
         DispatchQueue.global().async {
             let url = URL(string: self.user.largeImageUrl!)
             let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 guard let data = data else { return }
-                self.largeImageView.image = UIImage(data: data)
+                self?.largeImageView.image = UIImage(data: data)
             }
         }
         
