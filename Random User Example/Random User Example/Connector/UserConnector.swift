@@ -55,14 +55,13 @@ class UserConnector : UserConnectorProtocol {
 extension User {
     convenience init(json: [String: Any]) {
         self.init()
-        // TODO: handle missing elements?
-        username = (json["login"] as! [String: Any])["username"] as? String
+        username = (json["login"] as? [String: Any])?["username"] as? String
         email = json["email"] as? String
-        let nameJson = json["name"] as! [String: Any]
-        firstName = nameJson["first"] as? String
-        lastName = nameJson["last"] as? String
-        let pictureJson = json["picture"] as! [String: Any]
-        thumbnailUrl = pictureJson["thumbnail"] as? String
-        largeImageUrl = pictureJson["large"] as? String
+        let nameJson = json["name"] as? [String: Any]
+        firstName = nameJson?["first"] as? String
+        lastName = nameJson?["last"] as? String
+        let pictureJson = json["picture"] as? [String: Any]
+        thumbnailUrl = pictureJson?["thumbnail"] as? String
+        largeImageUrl = pictureJson?["large"] as? String
     }
 }
